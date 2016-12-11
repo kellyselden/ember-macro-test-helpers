@@ -1,17 +1,19 @@
 {
   "name": "ember-macro-test-helpers",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Convenience methods for testing Ember.js macros",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "macros",
+    "testing"
   ],
   "license": "MIT",
-  "author": "",
+  "author": "Kelly Selden",
   "directories": {
     "doc": "doc",
     "test": "tests"
   },
-  "repository": "",
+  "repository": "https://github.com/kellyselden/ember-macro-test-helpers.git",
   "scripts": {
     "build": "ember build",
     "start": "ember server",
@@ -22,7 +24,6 @@
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
-    "ember-ajax": "^2.4.1",
     "ember-cli": "2.10.0",
     "ember-cli-app-version": "^2.0.0",
     "ember-cli-dependency-checker": "^1.3.0",
@@ -31,16 +32,13 @@
     "ember-cli-inject-live-reload": "^1.4.1",
     "ember-cli-jshint": "^2.0.1",
     "ember-cli-qunit": "^3.0.1",
-    "ember-cli-release": "^0.2.9",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-test-loader": "^1.1.0",
     "ember-cli-uglify": "^1.2.0",
-    "ember-data": "^2.10.0",
     "ember-disable-prototype-extensions": "^1.1.0",
     "ember-export-application-global": "^1.0.5",
     "ember-load-initializers": "^0.5.1",
     "ember-resolver": "^2.0.3",
-    "ember-welcome-page": "^1.0.3",
     "loader.js": "^4.0.10"
   },
   "engines": {
