@@ -11,41 +11,41 @@ export default function({
   assertion,
   assertReadOnly
 }) {
-  let obj = EmberObject.extend({
+  let subject = EmberObject.extend({
     computed
   }).create();
 
   // compute initial value
   // to test recomputes
-  get(obj, 'computed');
+  get(subject, 'computed');
 
-  setProperties(obj, properties);
+  setProperties(subject, properties);
 
-  let val = get(obj, 'computed');
+  let result = get(subject, 'computed');
 
-  function doAssertion(val) {
+  function doAssertion(result) {
     if (assertion) {
-      assert.ok(assertion(val));
+      assert.ok(assertion(result));
     } else if (deepEqual) {
-      assert.deepEqual(val, deepEqual);
+      assert.deepEqual(result, deepEqual);
     } else if (assertReadOnly) {
-      let func = () => set(obj, 'computed', 'assert read only');
+      let func = () => set(subject, 'computed', 'assert read only');
       assert.throws(func, /Cannot set read-only property/);
     } else if (assert) {
-      assert.strictEqual(val, strictEqual);
+      assert.strictEqual(result, strictEqual);
     }
   }
 
   let promise;
-  if (typeof val === 'object' && typeof val.then === 'function') {
-    promise = val.then(doAssertion);
+  if (typeof result === 'object' && typeof result.then === 'function') {
+    promise = result.then(doAssertion);
   } else {
-    doAssertion(val);
+    doAssertion(result);
   }
 
   return {
-    obj,
-    val,
+    subject,
+    result,
     promise
   };
 }
