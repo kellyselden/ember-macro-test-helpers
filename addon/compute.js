@@ -4,6 +4,7 @@ import { default as set, setProperties } from 'ember-metal/set';
 
 export default function({
   assert,
+  subject = EmberObject.extend(),
   computed,
   properties,
   strictEqual,
@@ -11,9 +12,15 @@ export default function({
   assertion,
   assertReadOnly
 }) {
-  let subject = EmberObject.extend({
+  subject = subject.reopen({
     computed
-  }).create();
+  });
+
+  if (this) {
+    subject = this.subject();
+  } else {
+    subject = subject.create();
+  }
 
   // compute initial value
   // to test recomputes
