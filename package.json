@@ -1,6 +1,6 @@
 {
   "name": "ember-macro-test-helpers",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Convenience methods for testing Ember.js macros",
   "keywords": [
     "ember-addon",
