@@ -3,28 +3,25 @@
 [![npm version](https://badge.fury.io/js/ember-macro-test-helpers.svg)](https://badge.fury.io/js/ember-macro-test-helpers)
 [![Build Status](https://travis-ci.org/kellyselden/ember-macro-test-helpers.svg?branch=master)](https://travis-ci.org/kellyselden/ember-macro-test-helpers)
 
-This README outlines the details of collaborating on this Ember addon.
+This comes with a `compute` helper. Here is a sample usage:
 
-## Installation
+```js
+import myMacro from 'my-app/macros/my-macro';
+import compute from 'ember-macro-test-helpers/compute';
 
-* `git clone <repository-url>` this repository
-* `cd ember-macro-test-helpers`
-* `npm install`
-* `bower install`
+// ...
 
-## Running
+test('it works', function(assert) {
+  compute({
+    assert,
+    computed: myMacro('key1', 'key2'),
+    properties: {
+      key1: 1,
+      key2: 2
+    },
+    strictEqual: 3
+  });
+});
+```
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-
-## Running Tests
-
-* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
-
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
+View all the possible ways to use [here](https://github.com/kellyselden/ember-macro-test-helpers/blob/master/tests/integration/compute-test.js).
