@@ -22,7 +22,7 @@ describe('Acceptance | Application', function() {
     });
   });
 
-  after(function() {
+  afterEach(function() {
     return app.stopServer();
   });
 
@@ -40,10 +40,9 @@ describe('Acceptance | Application', function() {
   it('is disabled in production environment', function() {
     return app.startServer({
       command: 'fastboot',
-      additionalArguments: ['--serve-assets', '-prod'],
-      port: '49742'
+      additionalArguments: ['--serve-assets', '-prod']
     }).then(function() {
-      return request('http://localhost:49742');
+      return request('http://localhost:49741');
     }).then(function(response) {
       expect(response.body).to.contain('Error: Could not find module `ember-macro-test-helpers/compute`');
     });
