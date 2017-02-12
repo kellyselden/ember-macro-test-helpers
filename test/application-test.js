@@ -16,7 +16,6 @@ describe('Acceptance | Application', function() {
     }).then(function() {
       app.editPackageJSON(function(pkg) {
         pkg.devDependencies['ember-cli-fastboot'] = process.env.npm_package_devDependencies_ember_cli_fastboot;
-        pkg.devDependencies['fastboot'] = '1.0.0-rc.1';
       });
       return app.run('npm', 'install');
     });
