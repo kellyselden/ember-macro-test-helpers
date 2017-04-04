@@ -1,5 +1,6 @@
 # ember-macro-test-helpers
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/kellyselden/ember-macro-test-helpers.svg)](https://greenkeeper.io/)
 [![npm version](https://badge.fury.io/js/ember-macro-test-helpers.svg)](https://badge.fury.io/js/ember-macro-test-helpers)
 [![Build Status](https://travis-ci.org/kellyselden/ember-macro-test-helpers.svg?branch=master)](https://travis-ci.org/kellyselden/ember-macro-test-helpers)
 
