@@ -1,4 +1,5 @@
 import EmberObject from 'ember-object';
+import Evented from 'ember-evented';
 import get from 'ember-metal/get';
 import { default as set, setProperties } from 'ember-metal/set';
 
@@ -11,7 +12,7 @@ export default function({
   assertion,
   assertReadOnly
 }) {
-  let subject = EmberObject.extend({
+  let subject = EmberObject.extend(Evented, {
     computed
   }).create();
 
