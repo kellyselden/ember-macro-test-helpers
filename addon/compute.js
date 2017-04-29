@@ -5,6 +5,7 @@ import { default as set, setProperties } from 'ember-metal/set';
 
 export default function({
   assert,
+  skipInitialCompute,
   computed,
   properties,
   strictEqual,
@@ -16,9 +17,11 @@ export default function({
     computed
   }).create();
 
-  // compute initial value
-  // to test recomputes
-  get(subject, 'computed');
+  if (!skipInitialCompute) {
+    // compute initial value
+    // to test recomputes
+    get(subject, 'computed');
+  }
 
   setProperties(subject, properties);
 
