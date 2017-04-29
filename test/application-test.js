@@ -38,9 +38,9 @@ describe('Acceptance | Application', function() {
   it('is disabled in production environment', function() {
     return app.startServer({
       command: 'fastboot',
-      additionalArguments: ['--serve-assets', '-prod']
+      additionalArguments: ['--serve-assets', '-prod', '--port', '49742']
     }).then(() => {
-      return request('http://localhost:49741');
+      return request('http://localhost:49742');
     }).then(response => {
       expect(response.body).to.contain('Error: Could not find module `ember-macro-test-helpers/compute`');
     });
