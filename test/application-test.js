@@ -1,19 +1,21 @@
-var expect = require('chai').expect;
-var RSVP = require('rsvp');
-var request = RSVP.denodeify(require('request'));
-var AddonTestApp = require('ember-cli-addon-tests').AddonTestApp;
+'use strict';
+
+const expect = require('chai').expect;
+const RSVP = require('rsvp');
+const request = RSVP.denodeify(require('request'));
+const AddonTestApp = require('ember-cli-addon-tests').AddonTestApp;
 
 describe('Acceptance | Application', function() {
   this.timeout(300000);
 
-  var app;
+  let app;
 
   before(function() {
     app = new AddonTestApp();
 
     return app.create('dummy', {
       fixturesPath: 'tests'
-    }).then(function() {
+    }).then(() => {
       return app.runEmberCommand('install', 'ember-cli-fastboot');
     });
   });
@@ -26,9 +28,9 @@ describe('Acceptance | Application', function() {
     return app.startServer({
       command: 'fastboot',
       additionalArguments: ['--serve-assets']
-    }).then(function() {
+    }).then(() => {
       return request('http://localhost:49741');
-    }).then(function(response) {
+    }).then(response => {
       expect(response.body).to.contain('The app is working!');
     });
   });
@@ -37,9 +39,9 @@ describe('Acceptance | Application', function() {
     return app.startServer({
       command: 'fastboot',
       additionalArguments: ['--serve-assets', '-prod']
-    }).then(function() {
+    }).then(() => {
       return request('http://localhost:49741');
-    }).then(function(response) {
+    }).then(response => {
       expect(response.body).to.contain('Error: Could not find module `ember-macro-test-helpers/compute`');
     });
   });
