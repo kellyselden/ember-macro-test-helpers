@@ -1,5 +1,4 @@
-import EmberObject from 'ember-object';
-import Evented from 'ember-evented';
+import Component from 'ember-component';
 import get from 'ember-metal/get';
 import { default as set, setProperties } from 'ember-metal/set';
 
@@ -12,9 +11,19 @@ export default function({
   assertion,
   assertReadOnly
 }) {
-  let subject = EmberObject.extend(Evented, {
+  let MyComponent = Component.extend({
     computed
-  }).create();
+  });
+  let subject;
+  try {
+    subject = MyComponent.create({
+      renderer: {}
+    });
+  } catch (err) {
+    // this is for ember < 2.10
+    // can remove once only support 2.12
+    subject = MyComponent.create();
+  }
 
   // compute initial value
   // to test recomputes
