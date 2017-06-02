@@ -16,7 +16,10 @@ describe('Acceptance | Application', function() {
     return app.create('dummy', {
       fixturesPath: 'tests'
     }).then(() => {
-      return app.runEmberCommand('install', 'ember-cli-fastboot');
+      return app.runEmberCommand(
+        'install',
+        `ember-cli-fastboot@${process.env.npm_package_devDependencies_ember_cli_fastboot}`
+      );
     });
   });
 
