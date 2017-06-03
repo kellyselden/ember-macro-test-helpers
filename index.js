@@ -10,11 +10,11 @@ module.exports = {
     return this._super.included.apply(this, arguments);
   },
 
-  treeFor() {
+  treeForAddon() {
     if (this.app.env === 'production') {
       return;
     }
 
-    return this._super.treeFor.apply(this, arguments);
+    return this._super.treeForAddon.apply(this, arguments);
   }
 };
