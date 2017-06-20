@@ -1,3 +1,4 @@
+import EmberObject from 'ember-object';
 import { readOnly } from 'ember-computed';
 import RSVP from 'rsvp';
 import compute from 'ember-macro-test-helpers/compute';
@@ -12,6 +13,17 @@ test('it works without properties', function(assert) {
     assert,
     computed: readOnly('key'),
     strictEqual: undefined
+  });
+});
+
+test('it accepts a different base class', function(assert) {
+  compute({
+    assert,
+    baseClass: EmberObject.extend({
+      foo: 'bar'
+    }),
+    computed: readOnly('foo'),
+    strictEqual: 'bar'
   });
 });
 

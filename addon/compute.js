@@ -4,6 +4,7 @@ import { default as set, setProperties } from 'ember-metal/set';
 
 export default function({
   assert,
+  baseClass = Component,
   computed,
   properties,
   strictEqual,
@@ -11,7 +12,7 @@ export default function({
   assertion,
   assertReadOnly
 }) {
-  let MyComponent = Component.extend({
+  let MyComponent = baseClass.extend({
     computed
   });
   let subject;
