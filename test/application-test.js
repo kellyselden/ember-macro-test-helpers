@@ -15,7 +15,7 @@ describe('Acceptance | Application', function() {
 
     return app.create('dummy', {
       fixturesPath: 'tests',
-      skipInstall: true
+      skipNpm: true
     }).then(() => {
       app.editPackageJSON(pkg => {
         pkg.devDependencies['ember-cli-fastboot'] = process.env.npm_package_devDependencies_ember_cli_fastboot;
