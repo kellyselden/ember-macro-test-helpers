@@ -14,12 +14,14 @@ describe('Acceptance | Application', function() {
     app = new AddonTestApp();
 
     return app.create('dummy', {
-      fixturesPath: 'tests'
+      fixturesPath: 'tests',
+      skipInstall: true
     }).then(() => {
-      return app.runEmberCommand(
-        'install',
-        `ember-cli-fastboot@${process.env.npm_package_devDependencies_ember_cli_fastboot}`
-      );
+      app.editPackageJSON(pkg => {
+        pkg.devDependencies['ember-cli-fastboot'] = process.env.npm_package_devDependencies_ember_cli_fastboot;
+      });
+
+      return app.run('npm', 'install');
     });
   });
 
