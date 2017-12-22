@@ -38,6 +38,24 @@ test('it uses properties to calculate value', function(assert) {
   });
 });
 
+test('it will strict equal with correct arguments', function(assert) {
+  let args;
+
+  compute({
+    assert: {
+      strictEqual () { args = [...arguments]; }
+    },
+    computed: readOnly('key'),
+    properties: {
+      key: 'foo'
+    },
+    strictEqual: 'bar',
+    message: 'baz'
+  });
+
+  assert.deepEqual(args, ['foo', 'bar', 'baz']);
+});
+
 test('it will deep equal', function(assert) {
   compute({
     assert,
@@ -47,6 +65,24 @@ test('it will deep equal', function(assert) {
     },
     deepEqual: ['test value']
   });
+});
+
+test('it will deep equal with correct arguments', function(assert) {
+  let args
+
+  compute({
+    assert: {
+      deepEqual () { args = [...arguments] }
+    },
+    computed: readOnly('key'),
+    properties: {
+      key: 'foo'
+    },
+    deepEqual: 'bar',
+    message: 'baz'
+  });
+
+  assert.deepEqual(args, ['foo', 'bar', 'baz'])
 });
 
 test('it will allow you to calculate the assertion', function(assert) {
@@ -62,12 +98,49 @@ test('it will allow you to calculate the assertion', function(assert) {
   });
 });
 
+test('it will do the assertion with correct arguments', function(assert) {
+  let args
+
+  compute({
+    assert: {
+      ok () { args = [...arguments] }
+    },
+    computed: readOnly('key'),
+    properties: {
+      key: 'foo'
+    },
+    assertion(value) {
+      assert.equal(value, 'foo', 'argument of assertion')
+      return 'bar'
+    },
+    message: 'baz'
+  });
+
+  assert.deepEqual(args, ['bar', 'baz'], 'arguments of assert')
+});
+
 test('it can assert readOnly', function(assert) {
   compute({
     assert,
     computed: readOnly('key'),
     assertReadOnly: true
   });
+});
+
+test('it can assert readOnly with correct arguments', function(assert) {
+  let args;
+
+  compute({
+    assert: {
+      throws () { args = [...arguments] }
+    },
+    computed: readOnly('key'),
+    assertReadOnly: true,
+    message: 'baz'
+  });
+
+  assert.equal(args[1].toString(), '/Cannot set read-only property/', 'arg 1')
+  assert.equal(args[2], 'baz', 'arg 2')
 });
 
 test('it is promise-aware', function(assert) {
