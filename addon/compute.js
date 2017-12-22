@@ -10,7 +10,8 @@ export default function({
   strictEqual,
   deepEqual,
   assertion,
-  assertReadOnly
+  assertReadOnly,
+  message
 }) {
   let MyComponent = baseClass.extend({
     computed
@@ -36,14 +37,14 @@ export default function({
 
   function doAssertion(result) {
     if (assertion) {
-      assert.ok(assertion(result));
+      assert.ok(assertion(result), message);
     } else if (deepEqual) {
-      assert.deepEqual(result, deepEqual);
+      assert.deepEqual(result, deepEqual, message);
     } else if (assertReadOnly) {
       let func = () => set(subject, 'computed', 'assert read only');
-      assert.throws(func, /Cannot set read-only property/);
+      assert.throws(func, /Cannot set read-only property/, message);
     } else if (assert) {
-      assert.strictEqual(result, strictEqual);
+      assert.strictEqual(result, strictEqual, message);
     }
   }
 
