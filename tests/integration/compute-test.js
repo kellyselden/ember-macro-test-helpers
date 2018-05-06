@@ -1,5 +1,5 @@
-import EmberObject from 'ember-object';
-import { readOnly } from 'ember-computed';
+import EmberObject from '@ember/object';
+import { readOnly } from '@ember/object/computed';
 import RSVP from 'rsvp';
 import compute from 'ember-macro-test-helpers/compute';
 import { module, test } from 'qunit';
