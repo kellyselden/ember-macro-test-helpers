@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { get, set, setProperties  } from '@ember/object';
+import { get, set, setProperties } from '@ember/object';
 
 export default function({
   assert,
