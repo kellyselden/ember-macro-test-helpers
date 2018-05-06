@@ -1,6 +1,5 @@
-import Component from 'ember-component';
-import get from 'ember-metal/get';
-import { default as set, setProperties } from 'ember-metal/set';
+import Component from '@ember/component';
+import { get, set, setProperties  } from '@ember/object';
 
 export default function({
   assert,
