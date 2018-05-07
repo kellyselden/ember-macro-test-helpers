@@ -3,17 +3,16 @@
 module.exports = {
   name: 'ember-macro-test-helpers',
 
-  included(app) {
-    this.app = app;
+  treeForAddonTestSupport(tree) {
+    const Funnel = require('broccoli-funnel');
 
-    return this._super.included.apply(this, arguments);
-  },
+    let namespacedTree = new Funnel(tree, {
+      destDir: this.moduleName(),
+      annotation: `Addon#treeForTestSupport (${this.name})`
+    });
 
-  treeForAddon() {
-    if (this.app.env === 'production') {
-      return;
-    }
-
-    return this._super.treeForAddon.apply(this, arguments);
+    return this.preprocessJs(namespacedTree, '/', this.name, {
+      registry: this.registry
+    });
   }
 };
