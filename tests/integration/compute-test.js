@@ -1,7 +1,7 @@
 import EmberObject from '@ember/object';
 import { readOnly } from '@ember/object/computed';
 import RSVP from 'rsvp';
-import compute from 'ember-macro-test-helpers/compute';
+import { compute } from 'ember-macro-test-helpers';
 import { module, test } from 'qunit';
 
 const { resolve } = RSVP;
