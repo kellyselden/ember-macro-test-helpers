@@ -47,7 +47,7 @@ export default function({
   }
 
   let promise;
-  if (typeof result === 'object' && typeof result.then === 'function') {
+  if (result && typeof result === 'object' && typeof result.then === 'function') {
     promise = result.then(doAssertion);
   } else {
     doAssertion(result);
