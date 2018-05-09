@@ -1,10 +1,8 @@
 import EmberObject from '@ember/object';
 import { readOnly } from '@ember/object/computed';
-import RSVP from 'rsvp';
+import { resolve } from 'rsvp';
 import { compute } from 'ember-macro-test-helpers';
 import { module, test } from 'qunit';
-
-const { resolve } = RSVP;
 
 module('Integration | compute', function() {
   test('it works without properties', function(assert) {
