@@ -5,6 +5,8 @@ ember-macro-test-helpers
 [![npm version](https://badge.fury.io/js/ember-macro-test-helpers.svg)](https://badge.fury.io/js/ember-macro-test-helpers)
 [![Build Status](https://travis-ci.org/kellyselden/ember-macro-test-helpers.svg?branch=master)](https://travis-ci.org/kellyselden/ember-macro-test-helpers)
 
+This was incorporated into https://github.com/kellyselden/ember-macro-helpers/pull/233.
+
 This comes with a `compute` helper. Here is a sample usage:
 
 ```js
